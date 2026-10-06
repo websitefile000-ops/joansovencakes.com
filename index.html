@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joan's Oven 🍰 • Artisanal Layered Cakes</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        oven: {
+                            50: '#fdf8f6',
+                            100: '#fbf0eb',
+                            200: '#f5ded4',
+                            300: '#ebc3b3',
+                            400: '#dc9e87',
+                            500: '#cd7b61',
+                            600: '#bc6047',
+                            700: '#9d4a36',
+                            800: '#813e30',
+                            900: '#4a231b',
+                            gold: '#d4af37',
+                            cream: '#fcfaf8'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #fcfaf8;
+            color: #4a231b;
+        }
+        .font-serif-title {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+        }
+        .glass-panel {
+            background: rgba(252, 250, 248, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(245, 222, 212, 0.6);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(245, 222, 212, 0.7);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #fbf0eb;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cd7b61;
+            border-radius: 4px;
+        }
+        .pulse-open {
+            animation: pulse-green 2s infinite;
+        }
+        @keyframes pulse-green {
+            0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5); }
+            70% { box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+        }
+    </style>
+</head>
+<body class="bg-oven-cream text-oven-900 antialiased custom-scrollbar selection:bg-oven-200 selection:text-oven-900">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-gradient-to-r from-oven-900 via-oven-800 to-oven-900 text-white text-xs py-2 px-4 text-center font-medium flex items-center justify-center gap-3">
+        <span class="inline-flex items-center gap-1.5 bg-white/10 px-2.5 py-0.5 rounded-full border border-white/15">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 pulse-open"></span>
+            <span class="text-[11px] uppercase tracking-widest font-semibold">Oven Open Today</span>
+        </span>
+        <span class="hidden md:inline text-oven-100">🍰 Order fresh artisanal layer cakes for your celebrations!</span>
+        <a href="#cakes" class="underline hover:text-oven-200 transition-colors font-semibold">Order Cake Online &rarr;</a>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header class="sticky top-0 z-40 glass-panel shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo with Layered Cake Emoji 🍰 -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-oven-500 to-oven-400 flex items-center justify-center text-2xl shadow-md shadow-oven-500/25 group-hover:scale-105 transition-transform duration-300">
+                        🍰
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-1.5">
+                            <span class="font-serif-title text-2xl sm:text-3xl font-bold tracking-tight text-oven-900 group-hover:text-oven-600 transition-colors">
+                                Joan's Oven
+                            </span>
+                            <span class="text-xl">🍰</span>
+                        </div>
+                        <span class="block text-[10px] tracking-[0.25em] uppercase text-oven-500 font-bold -mt-1">
+                            Artisanal Layer Cakes
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a href="#home" class="text-sm font-semibold text-oven-900 hover:text-oven-600 transition-colors flex items-center gap-1.5 py-1 border-b-2 border-transparent hover:border-oven-500">
+                        Home
+                    </a>
+                    <a href="#cakes" class="text-sm font-semibold text-oven-900 hover:text-oven-600 transition-colors flex items-center gap-1.5 py-1 border-b-2 border-transparent hover:border-oven-500">
+                        <span class="text-xs">🍰</span> Our Layer Cakes
+                    </a>
+                    <a href="#featured" class="text-sm font-semibold text-oven-900 hover:text-oven-600 transition-colors flex items-center gap-1.5 py-1 border-b-2 border-transparent hover:border-oven-500">
+                        <i data-lucide="sparkles" class="w-4 h-4 text-oven-500"></i> Best Sellers
+                    </a>
+                    <a href="#reviews" class="text-sm font-semibold text-oven-900 hover:text-oven-600 transition-colors flex items-center gap-1.5 py-1 border-b-2 border-transparent hover:border-oven-500">
+                        <i data-lucide="heart" class="w-4 h-4 text-oven-500"></i> Reviews
+                    </a>
+                    <a href="#contact" class="text-sm font-semibold text-oven-900 hover:text-oven-600 transition-colors flex items-center gap-1.5 py-1 border-b-2 border-transparent hover:border-oven-500">
+                        <i data-lucide="map-pin" class="w-4 h-4 text-oven-500"></i> Visit & Contact
+                    </a>
+                </nav>
+
+                <!-- Cart Button -->
+                <div class="flex items-center gap-3">
+                    <button onclick="openCart()" class="relative bg-gradient-to-r from-oven-600 to-oven-700 hover:from-oven-700 hover:to-oven-800 text-white px-5 py-2.5 rounded-full font-semibold text-sm shadow-md shadow-oven-600/20 transition-all duration-300 hover:shadow-lg hover:shadow-oven-600/30 flex items-center gap-2 group">
+                        <i data-lucide="shopping-bag" class="w-4 h-4 group-hover:scale-110 transition-transform"></i>
+                        <span>Cake Basket</span>
+                        <span id="nav-cart-badge" class="bg-oven-gold text-oven-900 text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center -mr-1">0</span>
+                    </button>
+
+                    <button onclick="toggleMobileMenu()" class="lg:hidden p-2 text-oven-900 hover:bg-oven-100 rounded-xl transition-colors" aria-label="Toggle Menu">
+                        <i data-lucide="menu" id="menu-icon-open" class="w-6 h-6"></i>
+                        <i data-lucide="x" id="menu-icon-close" class="w-6 h-6 hidden"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer -->
+        <div id="mobile-menu" class="hidden lg:hidden border-t border-oven-200/60 bg-oven-cream/95 backdrop-blur-md px-6 py-5 space-y-4 shadow-xl">
+            <a href="#home" onclick="toggleMobileMenu()" class="flex items-center gap-3 py-2 text-oven-900 font-medium hover:text-oven-600">
+                <i data-lucide="home" class="w-5 h-5 text-oven-500"></i> Home
+            </a>
+            <a href="#cakes" onclick="toggleMobileMenu()" class="flex items-center gap-3 py-2 text-oven-900 font-medium hover:text-oven-600">
+                <span>🍰</span> Our Layer Cakes
+            </a>
+            <a href="#featured" onclick="toggleMobileMenu()" class="flex items-center gap-3 py-2 text-oven-900 font-medium hover:text-oven-600">
+                <i data-lucide="sparkles" class="w-5 h-5 text-oven-500"></i> Best Sellers
+            </a>
+            <a href="#reviews" onclick="toggleMobileMenu()" class="flex items-center gap-3 py-2 text-oven-900 font-medium hover:text-oven-600">
+                <i data-lucide="heart" class="w-5 h-5 text-oven-500"></i> Customer Reviews
+            </a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="flex items-center gap-3 py-2 text-oven-900 font-medium hover:text-oven-600">
+                <i data-lucide="map-pin" class="w-5 h-5 text-oven-500"></i> Visit & Contact
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Banner Section -->
+    <section id="home" class="relative overflow-hidden py-16 lg:py-24 bg-gradient-to-b from-oven-100/60 via-oven-50/40 to-oven-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+                    <div class="inline-flex items-center gap-2 bg-white/80 border border-oven-200 px-4 py-1.5 rounded-full shadow-sm">
+                        <span class="text-sm">🍰</span>
+                        <span class="text-xs font-bold uppercase tracking-widest text-oven-800">Fresh Oven-Baked Layer Cakes Daily</span>
+                    </div>
+
+                    <h1 class="font-serif-title text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-oven-900 leading-[1.08]">
+                        Artisanal Layered Cakes <br>
+                        <span class="italic text-oven-600 underline decoration-oven-300 decoration-wavy decoration-2">Baked with Love...</span>
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-oven-900/80 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        From delicate chiffon sponges to rich velvety frostings, Joan's Oven brings you handcrafted multi-layer cakes made for life's sweetest celebrations in Matina, Davao City.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#cakes" class="w-full sm:w-auto bg-oven-900 hover:bg-oven-800 text-white px-8 py-4 rounded-full font-bold text-sm shadow-xl shadow-oven-900/15 transition-all duration-300 hover:scale-105 text-center flex items-center justify-center gap-2">
+                            <span>Explore Our Cakes</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                        <a href="#featured" class="w-full sm:w-auto bg-white hover:bg-oven-50 text-oven-900 border border-oven-200 px-7 py-4 rounded-full font-bold text-sm shadow-sm transition-all duration-300 text-center flex items-center justify-center gap-2">
+                            <i data-lucide="sparkles" class="w-4 h-4 text-oven-500"></i>
+                            <span>View Best Sellers</span>
+                        </a>
+                    </div>
+
+                    <div class="pt-6 grid grid-cols-3 gap-4 border-t border-oven-200/60 text-center lg:text-left">
+                        <div>
+                            <div class="font-serif-title text-2xl sm:text-3xl font-bold text-oven-900">100%</div>
+                            <div class="text-xs text-oven-900/70 font-medium">Real Butter & Cream</div>
+                        </div>
+                        <div>
+                            <div class="font-serif-title text-2xl sm:text-3xl font-bold text-oven-900">8+</div>
+                            <div class="text-xs text-oven-900/70 font-medium">Signature Cake Layers</div>
+                        </div>
+                        <div>
+                            <div class="font-serif-title text-2xl sm:text-3xl font-bold text-oven-900">5.0 ★</div>
+                            <div class="text-xs text-oven-900/70 font-medium">Local Rating</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 relative">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        <div class="rounded-3xl overflow-hidden shadow-2xl border-4 border-white shadow-oven-900/15 group relative aspect-[4/5]">
+                            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80" alt="Triple Chocolate Fudge Cake" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-oven-900/80 via-transparent to-transparent"></div>
+                            <div class="absolute bottom-6 left-6 right-6 text-white space-y-1">
+                                <span class="bg-oven-gold text-oven-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider inline-block mb-1">Baker's Highlight 🍰</span>
+                                <h3 class="font-serif-title text-2xl font-bold">Triple Chocolate Fudge Layer</h3>
+                                <p class="text-xs text-oven-100 opacity-90">Dark cocoa sponges encased in silky chocolate ganache.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Best Sellers Spotlight -->
+    <section id="featured" class="py-16 bg-gradient-to-b from-oven-50/60 to-white border-y border-oven-200/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+                <div>
+                    <span class="text-xs font-bold text-oven-600 uppercase tracking-widest flex items-center gap-1.5">
+                        <i data-lucide="sparkles" class="w-4 h-4"></i> Signature Bakery Masterpieces
+                    </span>
+                    <h2 class="font-serif-title text-3xl sm:text-4xl font-bold text-oven-900">Featured Layer Cakes</h2>
+                </div>
+                <p class="text-sm text-oven-900/70 max-w-md">
+                    Handcrafted multi-layer cakes baked daily in small batches with real butter, fresh fruit compotes, and silky glazes.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="featured-cakes-grid">
+                <!-- Javascript renders top 3 featured cakes -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Interactive Cake Showcase Menu -->
+    <section id="cakes" class="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-10 space-y-3">
+            <span class="bg-oven-100 text-oven-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest inline-block">100% Cake Menu 🍰</span>
+            <h2 class="font-serif-title text-4xl sm:text-5xl font-bold text-oven-900">Explore Our Cake Gallery</h2>
+            <p class="text-sm sm:text-base text-oven-900/70">Order by individual slice or full 8-inch whole cake for special occasions.</p>
+        </div>
+
+        <!-- Search & Filter Bar -->
+        <div class="max-w-4xl mx-auto mb-12 space-y-6">
+            <div class="relative max-w-md mx-auto">
+                <i data-lucide="search" class="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-oven-400"></i>
+                <input type="text" id="search-input" onkeyup="filterCakes()" placeholder="Search cakes by flavor (e.g. Red Velvet, Ube, Chocolate)..." class="w-full pl-12 pr-4 py-3 bg-white border border-oven-200 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-oven-400 shadow-sm transition-all">
+            </div>
+
+            <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3" id="category-buttons">
+                <button onclick="setCategory('all')" class="category-btn active px-5 py-2.5 rounded-full text-xs font-bold transition-all bg-oven-900 text-white shadow-md">
+                    All Cakes (8)
+                </button>
+                <button onclick="setCategory('Layer Cakes')" class="category-btn px-5 py-2.5 rounded-full text-xs font-bold transition-all bg-white text-oven-900 border border-oven-200 hover:bg-oven-50">
+                    🍰 Signature Layer Cakes
+                </button>
+                <button onclick="setCategory('Celebration Cakes')" class="category-btn px-5 py-2.5 rounded-full text-xs font-bold transition-all bg-white text-oven-900 border border-oven-200 hover:bg-oven-50">
+                    🎉 Celebration Cakes
+                </button>
+                <button onclick="setCategory('Fruity & Fresh')" class="category-btn px-5 py-2.5 rounded-full text-xs font-bold transition-all bg-white text-oven-900 border border-oven-200 hover:bg-oven-50">
+                    🍓 Fruity & Fresh
+                </button>
+            </div>
+        </div>
+
+        <!-- Cake Products Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8" id="cakes-grid">
+            <!-- Dynamically populated by JS -->
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="py-16 bg-gradient-to-b from-oven-100/60 to-oven-50/40 border-y border-oven-200/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12 space-y-2">
+                <div class="text-oven-gold font-bold text-lg">★★★★★</div>
+                <h2 class="font-serif-title text-3xl sm:text-4xl font-bold text-oven-900">What Cake Lovers Say 💕</h2>
+                <p class="text-sm text-oven-900/70">Real reviews from our customers in Matina, Davao City.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="reviews-grid">
+                <!-- Javascript inserted -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-6 space-y-6">
+                <span class="text-xs font-bold text-oven-600 uppercase tracking-widest">Handcrafted in Matina, Davao City</span>
+                <h2 class="font-serif-title text-4xl sm:text-5xl font-bold text-oven-900 leading-tight">
+                    The Art of Oven Baking 🍰
+                </h2>
+                <p class="text-sm sm:text-base text-oven-900/80 leading-relaxed">
+                    At Joan's Oven, every layer cake is a labor of love. We craft our sponges slowly using fresh local eggs, pure vanilla bean extract, imported cocoa, and genuine cream. Whether you need a single slice for an afternoon treat or an 8-inch celebration cake, we bake fresh every day.
+                </p>
+                <div class="grid grid-cols-2 gap-4 pt-2">
+                    <div class="flex items-center gap-3 bg-white p-3.5 rounded-2xl border border-oven-200">
+                        <i data-lucide="check-circle2" class="w-5 h-5 text-oven-600"></i>
+                        <span class="text-xs font-bold text-oven-900">Custom Piping Available</span>
+                    </div>
+                    <div class="flex items-center gap-3 bg-white p-3.5 rounded-2xl border border-oven-200">
+                        <i data-lucide="check-circle2" class="w-5 h-5 text-oven-600"></i>
+                        <span class="text-xs font-bold text-oven-900">Same-Day Slice Pickup</span>
+                    </div>
+                </div>
+            </div>
+            <div class="lg:col-span-6">
+                <div class="relative rounded-3xl overflow-hidden shadow-xl border-4 border-white aspect-rectangle">
+                    <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=800&q=80" alt="Cake Preparation">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer id="contact" class="bg-gradient-to-b from-oven-100 via-oven-200/40 to-oven-200/80 pt-16 pb-12 text-oven-900 border-t border-oven-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <div class="glass-card p-6 rounded-2xl space-y-2">
+                    <div class="w-10 h-10 rounded-full bg-oven-100 flex items-center justify-center text-oven-600 mb-3"><i data-lucide="phone" class="w-5 h-5"></i></div>
+                    <h4 class="font-serif-title font-bold text-lg text-oven-900">Phone Contact</h4>
+                    <p class="text-sm font-semibold">0952 657 0616</p>
+                </div>
+                <div class="glass-card p-6 rounded-2xl space-y-2">
+                    <div class="w-10 h-10 rounded-full bg-oven-100 flex items-center justify-center text-oven-600 mb-3"><i data-lucide="mail" class="w-5 h-5"></i></div>
+                    <h4 class="font-serif-title font-bold text-lg text-oven-900">Email Inquiry</h4>
+                    <p class="text-sm font-semibold">joansoguilon04@gmail.com</p>
+                </div>
+                <div class="glass-card p-6 rounded-2xl space-y-2">
+                    <div class="w-10 h-10 rounded-full bg-oven-100 flex items-center justify-center text-oven-600 mb-3"><i data-lucide="map-pin" class="w-5 h-5"></i></div>
+                    <h4 class="font-serif-title font-bold text-lg text-oven-900">Location</h4>
+                    <p class="text-sm font-semibold">Matina, Davao City, Philippines</p>
+                </div>
+                <div class="glass-card p-6 rounded-2xl space-y-2">
+                    <div class="w-10 h-10 rounded-full bg-oven-100 flex items-center justify-center text-oven-600 mb-3"><i data-lucide="clock" class="w-5 h-5"></i></div>
+                    <h4 class="font-serif-title font-bold text-lg text-oven-900">Bakery Hours</h4>
+                    <p class="text-sm font-semibold">Monday – Saturday (1:00 PM – 10:00 PM)</p>
+                </div>
+            </div>
+
+            <div class="border-t border-oven-300/50 pt-8 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+                <div>
+                    <div class="font-serif-title text-2xl font-bold text-oven-900">Joan's Oven 🍰</div>
+                    <p class="text-xs text-oven-900/70 mt-1">Specializing in artisanal layered cakes and custom bakery treats.</p>
+                </div>
+                <div class="text-xs text-oven-900/60">© 2026 Joan's Oven • All rights reserved. 💕</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Overlay & Drawer -->
+    <div id="cart-overlay" onclick="closeCart()" class="fixed inset-0 bg-oven-900/40 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+    <aside id="cart-drawer" class="fixed right-0 top-0 h-full w-full max-w-md bg-white z-50 shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
+        <div class="p-6 border-b border-oven-100 flex items-center justify-between bg-oven-50/50">
+            <div class="flex items-center gap-2">
+                <span class="text-xl">🍰</span>
+                <h3 class="font-serif-title text-2xl font-bold text-oven-900">Your Cake Basket</h3>
+            </div>
+            <button onclick="closeCart()" class="w-8 h-8 rounded-full bg-oven-100 flex items-center justify-center text-oven-900"><i data-lucide="x" class="w-4 h-4"></i></button>
+        </div>
+
+        <!-- Free Delivery Progress -->
+        <div class="bg-oven-100/60 p-3.5 px-6 border-b border-oven-200/50">
+            <div class="flex justify-between text-xs font-bold mb-1 text-oven-900">
+                <span id="promo-threshold-text">Add ₱500 for Free Delivery 🚚</span>
+                <span id="promo-percent-text">0%</span>
+            </div>
+            <div class="w-full bg-white h-2 rounded-full overflow-hidden border border-oven-200">
+                <div id="promo-bar" class="bg-oven-600 h-full w-0 transition-all duration-300"></div>
+            </div>
+        </div>
+
+        <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4 custom-scrollbar"></div>
+
+        <div class="p-6 border-t border-oven-100 bg-oven-50/30 space-y-4">
+            <!-- Promo Code Bar -->
+            <div class="flex gap-2">
+                <input type="text" id="promo-input" placeholder="Promo code (e.g. JOAN10)" class="flex-1 px-3.5 py-2 text-xs border border-oven-200 rounded-xl focus:outline-none focus:ring-1 focus:ring-oven-500 uppercase">
+                <button onclick="applyPromo()" class="bg-oven-900 text-white px-4 py-2 rounded-xl text-xs font-bold hover:bg-oven-800 transition-colors">Apply</button>
+            </div>
+
+            <div class="space-y-1.5 pt-2 border-t border-oven-200/60 text-xs text-oven-900">
+                <div class="flex justify-between">
+                    <span class="text-oven-900/70">Subtotal</span>
+                    <span>₱<span id="cart-subtotal">0</span></span>
+                </div>
+                <div class="flex justify-between text-emerald-700 font-medium" id="discount-row" style="display:none;">
+                    <span>Discount (10%)</span>
+                    <span>-₱<span id="cart-discount">0</span></span>
+                </div>
+                <div class="flex justify-between font-bold text-oven-900 text-base pt-2 border-t border-oven-200">
+                    <span>Total Amount</span>
+                    <span class="text-oven-700">₱<span id="cart-total">0</span></span>
+                </div>
+            </div>
+
+            <button onclick="openCheckoutModal()" class="w-full bg-oven-700 hover:bg-oven-800 text-white font-bold py-3.5 rounded-full shadow-lg transition-all text-xs flex items-center justify-center gap-2">
+                <span>Proceed to Order Checkout</span>
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Cake Customization Modal -->
+    <div id="product-modal" class="fixed inset-0 bg-oven-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl border border-oven-200 relative transform scale-95 transition-transform duration-300" id="product-modal-content">
+            <button onclick="closeProductModal()" class="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-white/80 backdrop-blur-md flex items-center justify-center text-oven-900 shadow-md">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <div class="h-56 relative">
+                <img id="modal-img" src="" alt="" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                <div class="absolute bottom-4 left-6 text-white">
+                    <span id="modal-category" class="text-[10px] uppercase tracking-widest bg-oven-600 text-white font-bold px-2.5 py-0.5 rounded-full mb-1 inline-block"></span>
+                    <h3 id="modal-title" class="font-serif-title text-2xl font-bold"></h3>
+                </div>
+            </div>
+            <div class="p-6 space-y-4 max-h-[60vh] overflow-y-auto custom-scrollbar">
+                <p id="modal-desc" class="text-xs text-oven-900/80 leading-relaxed"></p>
+                
+                <!-- Size Selection -->
+                <div class="space-y-2">
+                    <label class="text-xs font-bold text-oven-900 block">Select Cake Portion:</label>
+                    <div class="grid grid-cols-2 gap-3">
+                        <button type="button" onclick="selectModalSize('slice')" id="size-btn-slice" class="size-btn p-3 rounded-2xl border-2 border-oven-600 bg-oven-50 text-left">
+                            <div class="text-xs font-bold text-oven-900">Single Slice 🍰</div>
+                            <div class="text-xs text-oven-700 font-semibold" id="modal-slice-price">₱0</div>
+                        </button>
+                        <button type="button" onclick="selectModalSize('whole')" id="size-btn-whole" class="size-btn p-3 rounded-2xl border border-oven-200 bg-white text-left hover:bg-oven-50">
+                            <div class="text-xs font-bold text-oven-900">Whole 8" Cake 🎂</div>
+                            <div class="text-xs text-oven-700 font-semibold" id="modal-whole-price">₱0</div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Custom Message Input -->
+                <div class="space-y-1.5">
+                    <label class="text-xs font-bold text-oven-900 block">Cake Board Custom Message (Optional):</label>
+                    <input type="text" id="modal-custom-msg" placeholder="e.g. 'Happy Birthday Sarah! 💕'" class="w-full px-3 py-2 text-xs border border-oven-200 rounded-xl focus:outline-none focus:ring-1 focus:ring-oven-500">
+                </div>
+
+                <!-- Birthday Candle Option -->
+                <div class="flex items-center justify-between p-3 bg-oven-50 rounded-2xl border border-oven-200">
+                    <div>
+                        <div class="text-xs font-bold text-oven-900">Include Gold Birthday Candles 🕯️</div>
+                        <div class="text-[11px] text-oven-900/60">+₱25 add-on</div>
+                    </div>
+                    <input type="checkbox" id="modal-candle-check" class="w-4 h-4 text-oven-600 rounded">
+                </div>
+
+                <div class="flex items-center justify-between pt-4 border-t border-oven-100">
+                    <div>
+                        <span class="text-[10px] text-oven-900/60 uppercase block font-bold">Total Price</span>
+                        <span class="font-serif-title text-2xl font-bold text-oven-900">₱<span id="modal-computed-price">0</span></span>
+                    </div>
+                    <button id="modal-add-btn" onclick="addModalItemToCart()" class="bg-oven-800 hover:bg-oven-900 text-white font-bold px-6 py-3 rounded-full text-xs shadow-md transition-all">
+                        Add To Basket 💕
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div id="checkout-modal" class="fixed inset-0 bg-oven-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 space-y-5 shadow-2xl border border-oven-200">
+            <div class="flex items-center justify-between border-b border-oven-100 pb-3">
+                <div class="flex items-center gap-2">
+                    <span class="text-xl">🍰</span>
+                    <h3 class="font-serif-title text-2xl font-bold text-oven-900">Joan's Oven Order</h3>
+                </div>
+                <button onclick="closeCheckoutModal()" class="text-oven-900"><i data-lucide="x" class="w-5 h-5"></i></button>
+            </div>
+            
+            <div id="checkout-summary-list" class="space-y-2 text-xs max-h-48 overflow-y-auto custom-scrollbar border-b border-oven-100 pb-3"></div>
+            
+            <div class="space-y-3">
+                <input type="text" placeholder="Your Full Name" class="w-full px-3.5 py-2 text-xs border border-oven-200 rounded-xl focus:outline-none focus:ring-1 focus:ring-oven-500">
+                <input type="tel" placeholder="Mobile Number (e.g. 0912 345 6789)" class="w-full px-3.5 py-2 text-xs border border-oven-200 rounded-xl focus:outline-none focus:ring-1 focus:ring-oven-500">
+                <textarea placeholder="Delivery Address in Matina, Davao City" rows="2" class="w-full px-3.5 py-2 text-xs border border-oven-200 rounded-xl focus:outline-none focus:ring-1 focus:ring-oven-500"></textarea>
+            </div>
+
+            <button onclick="confirmCheckout()" class="w-full bg-oven-900 hover:bg-oven-800 text-white font-bold py-3.5 rounded-full text-xs shadow-lg transition-all">
+                Place Cake Order 💕
+            </button>
+        </div>
+    </div>
+
+    <!-- Toast Alert -->
+    <div id="toast" class="fixed bottom-6 right-6 bg-oven-900 text-white px-5 py-3 rounded-2xl shadow-xl flex items-center gap-3 transform translate-y-20 opacity-0 transition-all duration-300 z-50 text-xs">
+        <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i>
+        <span id="toast-msg">Item added!</span>
+    </div>
+
+    <script>
+        // Joan's Oven Artisanal Layer Cakes Database
+        const cakes = [
+            { 
+                id: 1, 
+                name: "Classic Red Velvet Layer Cake", 
+                slicePrice: 180, 
+                wholePrice: 1350, 
+                desc: "Layers of vibrant crimson cocoa sponge filled and frosted with silky smooth real cream cheese frosting and fine cake crumbs.", 
+                img: "https://images.unsplash.com/photo-1586788680434-30d324b2d46f?auto=format&fit=crop&w=600&q=80", 
+                rating: "★ 5.0 (140 reviews)", 
+                quote: "“The cream cheese frosting is perfection!”", 
+                category: "Layer Cakes",
+                featured: true
+            },
+            { 
+                id: 2, 
+                name: "Strawberry Shortcake Layer", 
+                slicePrice: 195, 
+                wholePrice: 1480, 
+                desc: "Fresh sweet strawberry slices tucked between whipped vanilla cream chantilly and feather-light chiffon cake layers.", 
+                img: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=600&q=80", 
+                rating: "★ 4.9 (115 reviews)", 
+                quote: "“So light, fluffy, and fresh!”", 
+                category: "Fruity & Fresh",
+                featured: true
+            },
+            { 
+                id: 3, 
+                name: "Triple Chocolate Fudge Layer Cake", 
+                slicePrice: 210, 
+                wholePrice: 1550, 
+                desc: "Decadent dark chocolate sponges enveloped in velvety chocolate fudge ganache and topped with Belgian cocoa curl shavings.", 
+                img: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80", 
+                rating: "★ 5.0 (182 reviews)", 
+                quote: "“A chocoholic's absolute dream!”", 
+                category: "Celebration Cakes",
+                featured: true
+            },
+            { 
+                id: 4, 
+                name: "Mango Chiffon Layer Cake", 
+                slicePrice: 175, 
+                wholePrice: 1300, 
+                desc: "Fluffy vanilla chiffon cake layered with fresh Guimaras sweet mangoes with strawberry on top.", 
+                img: "https://images.unsplash.com/photo-1542826438-bd32f43d626f?auto=format&fit=crop&w=600&q=80", 
+                rating: "★ 4.8 (94 reviews)", 
+                quote: "“Sweet mangoes in every bite.”", 
+                category: "Fruity & Fresh",
+                featured: false
+            },
+            { 
+                id: 5, 
+                name: "Salted Caramel Layer Cake", 
+                slicePrice: 190, 
+                wholePrice: 1420, 
+                desc: "Rich caramel frosting spread fresh and soft between every tier for a melt-in-your-mouth bite.", 
+                img: "https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?auto=format&fit=crop&w=600&q=80",
+                rating: "★ 4.9 (88 reviews)", 
+                quote: "“Rich salted caramel bliss!”", 
+                category: "Celebration Cakes",
+                featured: false
+            },
+            { 
+                id: 6, 
+                name: "Chocolate Layered Dark Forest Cake", 
+                slicePrice: 180, 
+                wholePrice: 1320, 
+                desc: "Indulge in a premium, homegrown classic reinvented with the Chocolate Layered Dark Forest Cake.", 
+                img: "https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?auto=format&fit=crop&w=600&q=80", 
+                rating: "★ 5.0 (150 reviews)", 
+                quote: "“Very Premium Dark Forest Cake!”", 
+                category: "Celebration Cakes",
+                featured: false
+            },
+            {
+                id: 7,
+                name: "Layered White Cake with Chocolate Cream",
+                slicePrice: 165,
+                wholePrice: 1200,
+                desc: "A delicate, white vanilla cake paired beautifully with a decadent, smooth chocolate cream topping.",
+                img: "https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?auto=format&fit=crop&w=600&q=80",
+                rating: "★ 5.0 (148 reviews)",
+                quote: "“The combination is pure perfection!”",
+                category: "Specialty Cakes"
+            },
+            {
+                id: 8,
+                name: "Classic Vanilla Chocolate Cake",
+                slicePrice: 150,
+                wholePrice: 1100,
+                desc: "Soft and moist vanilla bean layers covered with silky vanilla buttercream for a light, creamy, and timeless treat.",
+                img: "https://images.unsplash.com/photo-1571115177098-24ec42ed204d?auto=format&fit=crop&w=800&q=80",
+                rating: "★ 4.9 (128 reviews)",
+                quote: "“Simple, soft, and absolutely delicious!”",
+                category: "Classic Cakes"
+            },
+        ];
+        const reviews = [
+            { name: "Maria Santos", role: "Matina, Davao City City", rating: "★★★★★", text: "Joan's Red Velvet Layer Cake made my daughter's birthday unforgettable! The cream cheese frosting is genuine and so rich." },
+            { name: "Chloe Tan", role: "Loyal Customer", rating: "★★★★★", text: "Hands down the best Triple Chocolate Fudge cake in Matina, Davao City. Every layer is moist and full of real chocolate goodness." },
+            { name: "Bea Rivera", role: "Local Foodie", rating: "★★★★★", text: "The Strawberry Shortcake layer slice is my absolute weekly treat. Light, fluffy, and never overly sweet!" }
+        ];
+
+        let cart = [];
+        let activeCategory = 'all';
+        let discountPercentage = 0;
+        let selectedModalCake = null;
+        let selectedModalSize = 'slice';
+
+        window.onload = function() {
+            lucide.createIcons();
+            renderFeaturedCakes();
+            renderCakes();
+            renderReviews();
+            updateCart();
+        };
+
+        function renderFeaturedCakes() {
+            const container = document.getElementById("featured-cakes-grid");
+            const featuredList = cakes.filter(c => c.featured);
+
+            container.innerHTML = featuredList.map(c => `
+                <div class="glass-card rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group border border-oven-200">
+                    <div class="h-56 relative overflow-hidden">
+                        <img src="${c.img}" alt="${c.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-oven-900 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-md">🍰 Best Seller</span>
+                    </div>
+                    <div class="p-6 flex flex-col flex-1">
+                        <h3 class="font-serif-title text-2xl font-bold text-oven-900 mb-1">${c.name}</h3>
+                        <div class="text-xs text-oven-gold font-medium mb-2">${c.rating}</div>
+                        <p class="text-xs text-oven-900/70 leading-relaxed mb-4 flex-1">${c.desc}</p>
+                        <div class="flex items-center justify-between pt-3 border-t border-oven-100 mt-auto">
+                            <div>
+                                <span class="text-[10px] text-oven-900/60 uppercase block">Slice / Whole</span>
+                                <span class="font-serif-title text-xl font-bold text-oven-900">₱${c.slicePrice} <span class="text-xs font-normal text-oven-900/60">/ ₱${c.wholePrice}</span></span>
+                            </div>
+                            <button onclick="openCustomModal(${c.id})" class="bg-oven-800 hover:bg-oven-900 text-white px-5 py-2.5 rounded-full text-xs font-bold shadow-md transition-all flex items-center gap-1">
+                                Customize 🍰
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderCakes() {
+            const grid = document.getElementById("cakes-grid");
+            const searchVal = document.getElementById("search-input").value.toLowerCase();
+
+            const filtered = cakes.filter(c => {
+                const matchesCat = activeCategory === 'all' || c.category === activeCategory;
+                const matchesSearch = c.name.toLowerCase().includes(searchVal) || c.desc.toLowerCase().includes(searchVal);
+                return matchesCat && matchesSearch;
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `<div class="col-span-full text-center py-12 text-oven-900/60 text-sm">No delicious cakes found matching your search! 🍰</div>`;
+                return;
+            }
+
+            grid.innerHTML = filtered.map(c => `
+                <article class="glass-card rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group border border-oven-200">
+                    <div class="h-48 relative overflow-hidden">
+                        <img src="${c.img}" alt="${c.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                        <span class="absolute top-3 left-3 bg-white/90 backdrop-blur-md text-oven-900 text-[10px] font-bold px-2.5 py-0.5 rounded-full border border-oven-200">🍰 ${c.category}</span>
+                    </div>
+                    <div class="p-5 flex flex-col flex-1">
+                        <h3 class="font-serif-title text-xl font-bold text-oven-900 mb-1">${c.name}</h3>
+                        <div class="text-xs text-oven-gold font-medium mb-2">${c.rating}</div>
+                        <p class="text-xs text-oven-900/70 leading-relaxed mb-3 flex-1">${c.desc}</p>
+                        
+                        <div class="bg-oven-50/80 p-2 rounded-xl mb-3 text-[11px] text-oven-800 italic border-l-2 border-oven-500">
+                            ${c.quote}
+                        </div>
+
+                        <div class="flex items-center justify-between pt-3 border-t border-oven-100 mt-auto">
+                            <div>
+                                <span class="font-serif-title text-lg font-bold text-oven-900">₱${c.slicePrice}</span>
+                                <span class="text-[10px] text-oven-900/60 font-medium">/slice</span>
+                            </div>
+                            <button onclick="openCustomModal(${c.id})" class="bg-oven-700 hover:bg-oven-800 text-white px-4 py-2 rounded-full text-xs font-bold shadow-md transition-all">
+                                Select 🍰
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            `).join('');
+
+            lucide.createIcons();
+        }
+
+        function setCategory(cat) {
+            activeCategory = cat;
+            document.querySelectorAll(".category-btn").forEach(btn => {
+                btn.className = "category-btn px-5 py-2.5 rounded-full text-xs font-bold transition-all bg-white text-oven-900 border border-oven-200 hover:bg-oven-50";
+            });
+            event.target.className = "category-btn active px-5 py-2.5 rounded-full text-xs font-bold transition-all bg-oven-900 text-white shadow-md";
+            renderCakes();
+        }
+
+        function filterCakes() {
+            renderCakes();
+        }
+
+        // Custom Modal Logic
+        function openCustomModal(id) {
+            selectedModalCake = cakes.find(c => c.id === id);
+            selectedModalSize = 'slice';
+            
+            document.getElementById("modal-img").src = selectedModalCake.img;
+            document.getElementById("modal-title").textContent = selectedModalCake.name;
+            document.getElementById("modal-category").textContent = selectedModalCake.category;
+            document.getElementById("modal-desc").textContent = selectedModalCake.desc;
+            document.getElementById("modal-slice-price").textContent = `₱${selectedModalCake.slicePrice}`;
+            document.getElementById("modal-whole-price").textContent = `₱${selectedModalCake.wholePrice}`;
+            document.getElementById("modal-custom-msg").value = "";
+            document.getElementById("modal-candle-check").checked = false;
+
+            selectModalSize('slice');
+
+            document.getElementById("product-modal").classList.remove("opacity-0", "pointer-events-none");
+            document.getElementById("product-modal-content").classList.remove("scale-95");
+        }
+
+        function selectModalSize(size) {
+            selectedModalSize = size;
+            const sliceBtn = document.getElementById("size-btn-slice");
+            const wholeBtn = document.getElementById("size-btn-whole");
+
+            if (size === 'slice') {
+                sliceBtn.className = "size-btn p-3 rounded-2xl border-2 border-oven-600 bg-oven-50 text-left";
+                wholeBtn.className = "size-btn p-3 rounded-2xl border border-oven-200 bg-white text-left hover:bg-oven-50";
+            } else {
+                wholeBtn.className = "size-btn p-3 rounded-2xl border-2 border-oven-600 bg-oven-50 text-left";
+                sliceBtn.className = "size-btn p-3 rounded-2xl border border-oven-200 bg-white text-left hover:bg-oven-50";
+            }
+            updateModalComputedPrice();
+        }
+
+        function updateModalComputedPrice() {
+            let base = selectedModalSize === 'slice' ? selectedModalCake.slicePrice : selectedModalCake.wholePrice;
+            if (document.getElementById("modal-candle-check").checked) base += 25;
+            document.getElementById("modal-computed-price").textContent = base.toLocaleString();
+        }
+
+        document.getElementById("modal-candle-check").addEventListener("change", updateModalComputedPrice);
+
+        function closeProductModal() {
+            document.getElementById("product-modal").classList.add("opacity-0", "pointer-events-none");
+            document.getElementById("product-modal-content").classList.add("scale-95");
+        }
+
+        function addModalItemToCart() {
+            const isSlice = selectedModalSize === 'slice';
+            const price = isSlice ? selectedModalCake.slicePrice : selectedModalCake.wholePrice;
+            const sizeLabel = isSlice ? 'Slice' : 'Whole 8" Cake';
+            const customMsg = document.getElementById("modal-custom-msg").value.trim();
+            const candles = document.getElementById("modal-candle-check").checked;
+
+            let finalPrice = price + (candles ? 25 : 0);
+            let itemTitle = `${selectedModalCake.name} (${sizeLabel})`;
+
+            cart.push({
+                id: Date.now(),
+                cakeId: selectedModalCake.id,
+                title: itemTitle,
+                price: finalPrice,
+                customMsg: customMsg,
+                candles: candles,
+                qty: 1
+            });
+
+            updateCart();
+            closeProductModal();
+            showToast(`Added ${itemTitle} to basket! 💕`);
+            openCart();
+        }
+
+        function updateCart() {
+            const count = cart.reduce((sum, i) => sum + i.qty, 0);
+            const subtotal = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
+            const discountAmt = subtotal * discountPercentage;
+            const total = subtotal - discountAmt;
+
+            document.getElementById("nav-cart-badge").textContent = count;
+            document.getElementById("cart-subtotal").textContent = subtotal.toLocaleString();
+            document.getElementById("cart-discount").textContent = discountAmt.toLocaleString();
+            document.getElementById("cart-total").textContent = total.toLocaleString();
+
+            // Threshold Progress Bar for Free Delivery (₱500 threshold)
+            const target = 500;
+            const percent = Math.min(100, Math.round((subtotal / target) * 100));
+            document.getElementById("promo-bar").style.width = `${percent}%`;
+            document.getElementById("promo-percent-text").textContent = `${percent}%`;
+
+            if (subtotal >= target) {
+                document.getElementById("promo-threshold-text").textContent = "Free Delivery Unlocked! 🚚🎉";
+            } else {
+                document.getElementById("promo-threshold-text").textContent = `Add ₱${target - subtotal} for Free Delivery 🚚`;
+            }
+
+            const container = document.getElementById("cart-items");
+            if (cart.length === 0) {
+                container.innerHTML = `<div class="text-center py-16 text-oven-900/60 text-xs">Your cake basket is empty 🍰</div>`;
+                return;
+            }
+
+            container.innerHTML = cart.map((item, index) => `
+                <div class="p-3.5 bg-oven-50/70 rounded-2xl border border-oven-200/80 space-y-2">
+                    <div class="flex items-start justify-between gap-2">
+                        <div>
+                            <h5 class="font-bold text-xs text-oven-900">${item.title}</h5>
+                            <div class="text-xs text-oven-700 font-semibold mt-0.5">₱${item.price} each</div>
+                        </div>
+                        <button onclick="removeItem(${index})" class="text-oven-400 hover:text-oven-800 text-xs"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                    </div>
+                    ${item.customMsg ? `<div class="text-[10px] bg-white p-1.5 rounded-lg border border-oven-200 text-oven-800 italic">Msg: "${item.customMsg}"</div>` : ''}
+                    ${item.candles ? `<div class="text-[10px] text-oven-700 font-medium">🕯️ Includes Gold Candles</div>` : ''}
+                    <div class="flex items-center justify-between pt-1">
+                        <div class="flex items-center gap-2 bg-white px-2 py-1 rounded-xl border border-oven-200">
+                            <button onclick="changeQty(${index}, -1)" class="w-5 h-5 text-oven-900 font-bold text-xs">-</button>
+                            <span class="text-xs font-bold text-oven-900 px-1">${item.qty}</span>
+                            <button onclick="changeQty(${index}, 1)" class="w-5 h-5 text-oven-900 font-bold text-xs">+</button>
+                        </div>
+                        <span class="text-xs font-bold text-oven-900">₱${item.price * item.qty}</span>
+                    </div>
+                </div>
+            `).join('');
+
+            lucide.createIcons();
+        }
+
+        function changeQty(index, delta) {
+            cart[index].qty += delta;
+            if (cart[index].qty <= 0) cart.splice(index, 1);
+            updateCart();
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        function applyPromo() {
+            const input = document.getElementById("promo-input").value.trim().toUpperCase();
+            if (input === "JOAN10") {
+                discountPercentage = 0.10;
+                document.getElementById("discount-row").style.display = "flex";
+                showToast("10% Discount Applied! 💕");
+            } else {
+                showToast("Invalid code! Try JOAN10");
+            }
+            updateCart();
+        }
+
+        function openCart() {
+            document.getElementById("cart-drawer").classList.remove("translate-x-full");
+            document.getElementById("cart-overlay").classList.remove("opacity-0", "pointer-events-none");
+        }
+
+        function closeCart() {
+            document.getElementById("cart-drawer").classList.add("translate-x-full");
+            document.getElementById("cart-overlay").classList.add("opacity-0", "pointer-events-none");
+        }
+
+        function openCheckoutModal() {
+            if (cart.length === 0) return showToast("Your basket is empty!");
+            const summary = document.getElementById("checkout-summary-list");
+            summary.innerHTML = cart.map(i => `
+                <div class="flex justify-between border-b border-oven-50 pb-1">
+                    <span>${i.qty}x ${i.title}</span>
+                    <span class="font-bold">₱${i.price * i.qty}</span>
+                </div>
+            `).join('');
+            closeCart();
+            document.getElementById("checkout-modal").classList.remove("opacity-0", "pointer-events-none");
+        }
+
+        function closeCheckoutModal() {
+            document.getElementById("checkout-modal").classList.add("opacity-0", "pointer-events-none");
+        }
+
+        function confirmCheckout() {
+            closeCheckoutModal();
+            cart = [];
+            discountPercentage = 0;
+            document.getElementById("discount-row").style.display = "none";
+            updateCart();
+            showToast("Order placed with Joan's Oven! 💕");
+        }
+
+        function renderReviews() {
+            const grid = document.getElementById("reviews-grid");
+            grid.innerHTML = reviews.map(r => `
+                <div class="glass-card p-6 rounded-3xl shadow-sm space-y-3 border border-oven-200">
+                    <div class="text-oven-gold text-sm font-bold">${r.rating}</div>
+                    <p class="text-xs text-oven-900/80 leading-relaxed italic">"${r.text}"</p>
+                    <div class="text-xs font-bold text-oven-900 pt-2 border-t border-oven-100">— ${r.name}, <span class="font-normal text-oven-900/60">${r.role}</span></div>
+                </div>
+            `).join('');
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById("toast");
+            document.getElementById("toast-msg").textContent = msg;
+            toast.classList.remove("translate-y-20", "opacity-0");
+            setTimeout(() => toast.classList.add("translate-y-20", "opacity-0"), 3000);
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById("mobile-menu").classList.toggle("hidden");
+            document.getElementById("menu-icon-open").classList.toggle("hidden");
+            document.getElementById("menu-icon-close").classList.toggle("hidden");
+        }
+    </script>
+</body>
+</html>
